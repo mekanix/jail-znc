@@ -1,0 +1,9 @@
+---
+znc_packages:
+  - name: znc
+
+znc_consul_template_prefix: znc
+
+znc_consul_templates:
+  - destination: /usr/local/etc/znc/znc.conf
+    filename: znc.conf.tpl
