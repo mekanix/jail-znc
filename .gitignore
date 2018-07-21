@@ -1,7 +1,8 @@
 .provisioned
 *.retry
-playbook/group_vars/all.yml
-playbook/inventory/inventory
-playbook/site.yml
+ansible/group_vars/all
+ansible/inventory/inventory
+ansible/site.yml
+build/
 cbsd.conf
 vars.mk
