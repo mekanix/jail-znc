@@ -3,28 +3,10 @@
   with_items: "{{ znc_packages }}"
   pkgng:
     name: "{{ item.name }}"
+  notify:
+    - restart znc
 
 - name: enable znc service
   template:
     src: znc.j2
     dest: /etc/rc.conf.d/znc
-
-- name: create consul-template directory for znc
-  file:
-    path: "/usr/local/etc/consul-templates/{{ znc_consul_template_prefix }}"
-    state: directory
-
-- name: copy znc consul-template files
-  with_items: "{{ znc_consul_templates }}"
-  copy:
-    src: "{{ item.filename }}"
-    dest: "{{ consul_template_root }}/{{ znc_consul_template_prefix }}/{{ item.filename }}"
-  notify:
-    - restart consul-template
-
-- name: configure consul-template for znc
-  template:
-    src: znc.consul.j2
-    dest: /usr/local/etc/consul-template.d/znc.conf
-  notify:
-    - restart consul-template

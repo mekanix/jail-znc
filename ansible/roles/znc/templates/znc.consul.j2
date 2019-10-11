@@ -1,7 +1,0 @@
-{% for item in znc_consul_templates %}
-template {
-  source = "{{ consul_template_root }}/{{ znc_consul_template_prefix }}/{{ item.filename }}"
-  destination = "{{ item.destination }}"
-  command = "sh -c 'chown znc:znc {{ item.destination }} && service znc restart || true'"
-}
-{% endfor %}

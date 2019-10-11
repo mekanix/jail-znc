@@ -3,6 +3,9 @@
 ansible/group_vars/all
 ansible/inventory/inventory
 ansible/site.yml
+ansible/roles/*
+!ansible/roles/znc
 build/
 cbsd.conf
 vars.mk
+project.mk
