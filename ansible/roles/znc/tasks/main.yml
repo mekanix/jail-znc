@@ -10,3 +10,39 @@
   template:
     src: znc.j2
     dest: /etc/rc.conf.d/znc
+  notify:
+    - restart znc
+
+- name: create znc config dir
+  file:
+    path: /usr/local/etc/znc
+    owner: znc
+    group: znc
+    state: directory
+  notify:
+    - restart znc
+
+- name: check if config exists
+  stat:
+    path: /usr/local/etc/znc/configs/znc.conf
+  register: config_result
+
+- name: copy expect script
+  copy:
+    src: znc.expect
+    dest: /usr/local/etc/znc/znc.expect
+    owner: znc
+    group: znc
+    mode: 0755
+  when: config_result.stat.exists == False
+
+- name: execute expect script
+  command: /usr/local/etc/znc/znc.expect
+  become: yes
+  become_user: znc
+  when: config_result.stat.exists == False
+
+- name: remove expect script
+  file:
+    path: /usr/local/etc/znc/znc.expect
+    state: absent

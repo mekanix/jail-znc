@@ -1,0 +1,47 @@
+#!/usr/bin/env expect
+
+spawn znc --makeconf --datadir=/usr/local/etc/znc --no-color
+
+expect "Listen on port (1025 to 65534): "
+send -- "6667\r"
+
+expect "Proceed with port 6667 anyway? (yes/no)"
+send -- "\r"
+
+expect "Listen using SSL (yes/no)"
+send -- "yes\r"
+
+expect "Listen using both IPv4 and IPv6 (yes/no)"
+send -- "no\r"
+
+expect "Username (alphanumeric):"
+send -- "admin\r"
+
+expect "Enter password:"
+send -- "admin\r"
+
+expect "Confirm password:"
+send -- "admin\r"
+
+expect "Nick"
+send -- "\r"
+
+expect "Alternate nick"
+send -- "\r"
+
+expect "Ident"
+send -- "\r"
+
+expect "Real name (optional): "
+send -- "\r"
+
+expect "Bind host (optional): "
+send -- "\r"
+
+expect "Set up a network? (yes/no)"
+send -- "no\r"
+
+expect "Launch ZNC now? (yes/no)"
+send -- "no\r"
+
+expect eof

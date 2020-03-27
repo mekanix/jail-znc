@@ -1,3 +1,4 @@
 ---
 znc_packages:
+  - name: expect
   - name: znc
