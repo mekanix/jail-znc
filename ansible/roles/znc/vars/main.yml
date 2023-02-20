@@ -1,4 +1,5 @@
 ---
 znc_packages:
   - name: expect
+  - name: sudo
   - name: znc
