@@ -12,7 +12,7 @@ expect "Listen using SSL (yes/no)"
 send -- "yes\r"
 
 expect "Listen using both IPv4 and IPv6 (yes/no)"
-send -- "no\r"
+send -- "yes\r"
 
 expect "Username (alphanumeric):"
 send -- "admin\r"
